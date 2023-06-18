@@ -1,4 +1,4 @@
-package afile
+package filex
 
 import (
 	"io"
