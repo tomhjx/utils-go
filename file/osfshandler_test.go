@@ -11,24 +11,24 @@ import (
 
 func getAppRootPath() string {
 	pwd, _ := os.Getwd()
-	rootPath := filepath.Dir(filepath.Dir(pwd))
+	rootPath := filepath.Dir(pwd)
 	return rootPath
 }
-func TestOsFsWriteFile(t *testing.T) {
-	rootPath := getAppRootPath()
-	hd := NewOsFsHandler()
-	c := []byte("TestOsFsWriteFile," + time.Now().Format("2006-01-02 15:04:05"))
-	src := rootPath + "/tmp/utils-go-test.txt"
-	err := hd.WriteFile(src, c, 0777)
-	assert.Nil(t, err)
-}
-
 func TestOsFsWriteDirsFile(t *testing.T) {
 	rootPath := getAppRootPath()
 	hd := NewOsFsHandler()
 	c := []byte("TestOsFsWriteDirsFile," + time.Now().Format("2006-01-02 15:04:05"))
 	src := rootPath + "/tmp/a/b/c/utils-go-test.txt"
 	err := hd.WriteDirsFile(src, c, 0777)
+	assert.Nil(t, err)
+}
+
+func TestOsFsWriteFile(t *testing.T) {
+	rootPath := getAppRootPath()
+	hd := NewOsFsHandler()
+	c := []byte("TestOsFsWriteFile," + time.Now().Format("2006-01-02 15:04:05"))
+	src := rootPath + "/tmp/utils-go-test.txt"
+	err := hd.WriteFile(src, c, 0777)
 	assert.Nil(t, err)
 }
 
